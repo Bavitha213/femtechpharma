@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FemTech Pharma Ltd</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f7fc;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    
+    <!-- Navigation Bar -->
+<header id="navbar" class="bg-white border-b-[0.3px] border-gray-300 py-2 px-8 flex justify-between items-center fixed w-full top-0 z-50 shadow-md transition duration-300">
+    <!-- Logo -->
+    <div class="logo">
+        <img src="logo.jpg" alt="FemTech Pharma Ltd Logo" class="h-12">
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="pl-10">
+        <ul class="flex space-x-8 text-gray-900 font-semibold text-lg">
+            <li><a href="#about" class="hover:text-purple-600">About Us</a></li>
+            <li><a href="#products" class="hover:text-purple-600">Products</a></li>
+            <li><a href="contact.html" class="hover:text-purple-600">Contact</a></li>
+            <li><a href="distributor-portal.html" class="hover:text-purple-600">Distributor Portal</a></li>
+        </ul>
+    </nav>
+
+    <!-- Icons -->
+    <div class="flex space-x-4 text-gray-900">
+        <a href="javascript:void(0);" id="login-icon" class="hover:text-purple-600">
+            <i class="fa-regular fa-user text-xl"></i>
+        </a>
+        <a href="javascript:void(0);" id="search-icon" class="hover:text-purple-600">
+            <i class="fa-solid fa-magnifying-glass text-xl"></i>
+        </a>
+        <a href="#" class="hover:text-purple-600">
+            <i class="fa-solid fa-bag-shopping text-xl"></i>
+        </a>
+    </div>
+</header>
+
+<!-- Blur Overlay (Applies to the Whole Page including Navbar) -->
+<div id="overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 hidden z-40"></div>
+
+<!-- Login Modal -->
+<div id="login-modal" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center border border-gray-300 hidden z-50">
+    <button id="close-login" class="absolute top-4 right-4 text-gray-500 text-2xl hover:text-gray-700">
+        &times;
+    </button>
+    <h2 class="text-3xl font-bold text-purple-700">Login</h2>
+    <p class="text-gray-600 mt-2">Welcome back! Please login to your account.</p>
+    
+    <form class="mt-6">
+        <div class="mb-4 text-left">
+            <label class="block text-gray-700 font-semibold mb-2" for="email">Email</label>
+            <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" placeholder="Enter your email" required>
+        </div>
+
+        <div class="mb-4 text-left">
+            <label class="block text-gray-700 font-semibold mb-2" for="password">Password</label>
+            <input type="password" id="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" placeholder="Enter your password" required>
+        </div>
+
+        <a href="#" class="text-purple-600 hover:underline text-sm">Forgot Password?</a>
+        
+        <button type="submit" class="w-full bg-purple-700 text-white font-semibold px-6 py-3 mt-4 rounded-lg hover:bg-purple-800 shadow-md">Login</button>
+    </form>
+    
+    <p class="text-gray-600 mt-4">Don't have an account? <a href="#" class="text-purple-700 font-semibold hover:underline">Sign up</a></p>
+</div>
+
+    <!-- Search Overlay (Blur Effect) -->
+    <div id="search-overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 hidden z-40"></div>
+
+    <!-- Search Box (Styled with Clickable Links) -->
+    <div id="search-box" class="fixed top-16 right-10 w-96 bg-white shadow-lg rounded-lg p-5 transform scale-95 opacity-0 transition-all duration-300 ease-in-out z-50 hidden">
+        <div class="flex items-center border-[1px] border-gray-300 rounded-lg p-2 relative">
+            <i class="fa-solid fa-magnifying-glass text-gray-600 ml-2"></i>
+            <input type="text" placeholder="Search for products..." class="w-full p-2 pl-8 text-gray-600 focus:outline-none border-none">
+            <button id="search-close" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-purple-700 text-white px-4 py-1 rounded-lg text-sm font-semibold hover:bg-purple-800 transition">
+                SEARCH
+            </button>
+        </div>
+
+    <!-- Section: People are searching for -->
+    <div class="mt-5">
+        <h3 class="text-md font-semibold text-gray-800">People are searching for</h3>
+        <ul class="mt-2">
+            <li><a href="coming-soon.html" class="block text-gray-700 py-1 hover:bg-gray-200 px-2 rounded">Product name</a></li>
+            <li><a href="coming-soon.html" class="block text-gray-700 py-1 hover:bg-gray-200 px-2 rounded">Product name</a></li>
+            <li><a href="coming-soon.html" class="block text-gray-700 py-1 hover:bg-gray-200 px-2 rounded">Product name</a></li>
+        </ul>
+    </div>
+
+    <!-- Section: Trending Products -->
+    <div class="mt-5">
+        <h3 class="text-md font-semibold text-gray-800">Trending Products</h3>
+        <ul class="mt-2">
+            <li><a href="coming-soon.html" class="block text-gray-700 py-1 hover:bg-gray-200 px-2 rounded">Product name</a></li>
+            <li><a href="coming-soon.html" class="block text-gray-700 py-1 hover:bg-gray-200 px-2 rounded">Product name</a></li>
+            <li><a href="coming-soon.html" class="block text-gray-700 py-1 hover:bg-gray-200 px-2 rounded"></a></li>
+        </ul>
+    </div>
+</div>
+
+     <!-- Hero Section -->
+     <section class="relative w-full h-screen flex items-center bg-cover bg-center" style="background-image: url('background3.jpg'); background-color: #cab3d6;">
+        <div class="text-white pl-10">
+            <h1 class="text-[30px] font-bold text-gray-900 text-left max-w-3xl ml-10 tracking-wide italic">
+                FemTech Pharma – <br> Empowering Women’s Health
+
+            </h1>
+            <p class="text-[24px] text-gray-700 ml-10 max-w-3xl tracking-wide italic">
+                Providing high-quality medical products<br>for women’s healthcare
+            </p>
+            <a href="#products" class="mt-6 inline-block px-6 py-3 bg-purple-900 text-white rounded-lg shadow-lg hover:bg-purple-700 transition ml-10 block w-fit">
+                Explore Products
+            </a>
+        </div>
+    </section>
+
+    <!-- About FemTech Pharma Section -->
+<section id="about" class="py-12 bg-gray-100 text-center">
+    <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-2xl font-bold text-purple-800 uppercase tracking-wide italic">About Us</h2>
+        <p class="text-xl text-gray-700 mt-4 leading-relaxed font-math italic">
+            FemTech Pharma Ltd is a leading New Zealand-based import and distribution company specializing in women's health.
+            We collaborate with globally recognized medical device manufacturers to bring high-quality healthcare solutions that 
+            enhance well-being and improve the quality of life for women in New Zealand and Australia.
+        </p>
+    </div>
+</section>
+
+<!-- Product Section -->
+<section id="products" class="py-20 bg-gray-100 text-center">
+    <h2 class="text-2xl font-bold text-purple-800 uppercase tracking-wide italic">Our Products</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 max-w-5xl mx-auto">
+        
+        <!-- Product 1 -->
+        <div class="bg-white p-6 border border-gray-300 shadow-lg rounded-lg hover:shadow-2xl transition transform hover:scale-105 w-64 h-auto mx-auto">
+            <div class="w-full h-60 bg-gray-300 flex items-center justify-center rounded-lg">
+                <span class="text-gray-600">Product Image</span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mt-4">Product Name 1</h3>
+            <a href="product.html" class="mt-2 inline-block text-purple-700 text-lg font-semibold hover:underline">View Product</a>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="bg-white p-6 border border-gray-300 shadow-lg rounded-lg hover:shadow-2xl transition transform hover:scale-105 w-64 h-auto mx-auto">
+            <div class="w-full h-60 bg-gray-300 flex items-center justify-center rounded-lg">
+                <span class="text-gray-600">Product Image</span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mt-4">Product Name 2</h3>
+            <a href="product.html" class="mt-2 inline-block text-purple-700 text-lg font-semibold hover:underline">View Product</a>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="bg-white p-6 border border-gray-300 shadow-lg rounded-lg hover:shadow-2xl transition transform hover:scale-105 w-64 h-auto mx-auto">
+            <div class="w-full h-60 bg-gray-300 flex items-center justify-center rounded-lg">
+                <span class="text-gray-600">Product Image</span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mt-4">Product Name 3</h3>
+            <a href="product.html" class="mt-2 inline-block text-purple-700 text-lg font-semibold hover:underline">View Product</a>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="bg-white p-6 border border-gray-300 shadow-lg rounded-lg hover:shadow-2xl transition transform hover:scale-105 w-64 h-auto mx-auto">
+            <div class="w-full h-60 bg-gray-300 flex items-center justify-center rounded-lg">
+                <span class="text-gray-600">Product Image</span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mt-4">Product Name 4</h3>
+            <a href="product.html" class="mt-2 inline-block text-purple-700 text-lg font-semibold hover:underline">View Product</a>
+        </div>
+
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 py-10 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Left Section: Contact Information -->
+            <div>
+                <div class="flex space-x-4 text-gray-700 text-2xl mb-4">
+                    <a href="#" class="hover:text-purple-600"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-purple-600"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-purple-600"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-purple-600"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <p class="text-gray-700 font-semibold">admin@femtechpharma.co.nz</p>
+                <p class="text-gray-700 font-semibold">09-945 3334</p>
+                <p class="text-gray-600 mt-2">FemTech Pharma Ltd</p>
+                <p class="text-gray-600">211 Ponsonby Road, Ponsonby, Auckland, 1011</p>
+            </div>
+
+            <!-- Right Section: Quick Links -->
+            <div>
+                <h3 class="text-gray-900 font-bold text-lg mb-3">Quick Links</h3>
+                <ul class="space-y-2 text-gray-700">
+                    <li><a href="#" class="hover:text-purple-600">FAQs</a></li>
+                    <li><a href="#" class="hover:text-purple-600">Terms and Conditions</a></li>
+                    <li><a href="#" class="hover:text-purple-600">Returns and Cancellation Policy</a></li>
+                    <li><a href="contact.html" class="hover:text-purple-600">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- JavaScript for Hiding Header on Scroll -->
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById("navbar");
+
+        window.addEventListener("scroll", function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                // Scroll down: hide navbar
+                navbar.style.transform = "translateY(-100%)";
+            } else {
+                // Scroll up: show navbar
+                navbar.style.transform = "translateY(0)";
+            }
+
+            lastScrollTop = scrollTop;
+        });
+    </script>
+
+    <!-- JavaScript to Toggle Search Sidebar -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchBox = document.getElementById("search-box");
+            const searchIcon = document.getElementById("search-icon");
+            const searchClose = document.getElementById("search-close");
+            const searchOverlay = document.getElementById("search-overlay");
+    
+            // Function to toggle search box and overlay
+            function toggleSearchBox() {
+                const isOpen = searchBox.classList.contains("opacity-100");
+    
+                if (isOpen) {
+                    searchBox.classList.replace("opacity-100", "opacity-0");
+                    searchBox.classList.replace("scale-100", "scale-95");
+                    setTimeout(() => searchBox.classList.add("hidden"), 200);
+                    searchOverlay.classList.add("hidden");
+                } else {
+                    searchBox.classList.remove("hidden");
+                    setTimeout(() => {
+                        searchBox.classList.replace("opacity-0", "opacity-100");
+                        searchBox.classList.replace("scale-95", "scale-100");
+                    }, 10);
+                    searchOverlay.classList.remove("hidden");
+                }
+            }
+    
+            // Open search box when clicking the search icon
+            searchIcon.addEventListener("click", toggleSearchBox);
+    
+            // Close search box when clicking the close (×) button or outside
+            searchClose.addEventListener("click", toggleSearchBox);
+            searchOverlay.addEventListener("click", toggleSearchBox);
+        });
+    </script>
+
+    <!-- JavaScript for Modal and Blur Effect -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const loginModal = document.getElementById("login-modal");
+        const overlay = document.getElementById("overlay");
+        const loginIcon = document.getElementById("login-icon");
+        const closeLogin = document.getElementById("close-login");
+
+        // Function to toggle login modal and overlay
+        function toggleLoginModal() {
+            loginModal.classList.toggle("hidden");
+            overlay.classList.toggle("hidden");
+        }
+
+        // Open login modal when clicking the login icon
+        loginIcon.addEventListener("click", toggleLoginModal);
+
+        // Close login modal when clicking the close button or overlay
+        closeLogin.addEventListener("click", toggleLoginModal);
+        overlay.addEventListener("click", toggleLoginModal);
+    });
+</script>
+    
+
+</body>
+</html>
